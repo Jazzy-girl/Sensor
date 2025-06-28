@@ -1,0 +1,40 @@
+DirectoryStructure.tree
+
+sensor
+    android/
+        build.sh
+        bin/      # executable files go here, android apps have .apk extension (see notes below)
+        xml/
+            AndroidManifest.xml
+            UdpSeender.xml
+        src/
+            cpp/
+                android.mk          # TODO Makefile
+                udp_sender.cpp      # TODO 
+                main.cpp
+            py/
+                recv.py
+            java/
+                MainActivity.java
+                UdpSender.java
+        inc/
+        lib/
+        notes/
+            ALooper.notes
+            CoordinatSystem-Android.md
+            BuildingSDK.md
+            KeyConcepts.md
+            DirectoryStructure.tree 
+
+notes
+An .apk file is essentially a ZIP archive that contains all the elements an Android app needs to function correctly, including:
+
+The compiled code (.dex files for the Dalvik/ART virtual machine)
+Resources (images, audio, XML layouts)
+Assets
+Certificates
+The AndroidManifest.xml file (which describes the app's components, permissions, and features)
+Native libraries (.so files, if the app uses the NDK for C/C++ code)
+When you download an app from the Google Play Store, the Play Store handles the download and installation of the .apk 
+    (or a more modern .aab which Google Play then uses to generate optimized .apks for your specific device). 
+If you "sideload" an app (install it from a source other than the Play Store), you'll directly interact with the .apk file.
