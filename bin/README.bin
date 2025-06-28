@@ -1,0 +1,5 @@
+The binary executable applications live here
+Naming standard 
+  for files in development and testing <app-name>.<YYMMDD(HHMM)>.<Initials>
+  for stable apps <app-name>.<YYMMDD>,<branch>
+  for release <app-name>.v<version-number>
