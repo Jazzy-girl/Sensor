@@ -24,7 +24,7 @@ LIBS_DIR="lib"
 DVLP_DIR="/home/rywilson/Sensor/Sensor"
 
 # Package name for the APK (must match AndroidManifest.xml)
-PACKAGE_NAME="dev.corticalsystematics.android_sensor" 
+PACKAGE_NAME="dev.corticalsystmatics.android_sensor" 
 
 # Name of the shared library (must match Android.mk LOCAL_MODULE)
 LIB_NAME="accelerometer-udp"
