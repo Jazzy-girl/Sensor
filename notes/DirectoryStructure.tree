@@ -9,7 +9,7 @@ sensor
             UdpSeender.xml
         src/
             cpp/
-                android.mk          # TODO Makefile
+                Android.mk          # TODO Makefile
                 udp_sender.cpp      # TODO 
                 main.cpp
             py/

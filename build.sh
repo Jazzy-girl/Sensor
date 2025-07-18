@@ -12,19 +12,19 @@
 # --- Configuration ---
 # Set these paths according to the host system
 # Ensure NDK_HOME points to the NDK installation directory
-export NDK_HOME="${HOME}/Android/Sdk/ndk/25.1.8749298" # <--- TODO: Update this to the NDK path and version!
+export NDK_HOME="${HOME}/Android/Sdk/ndk/25.1.8937393" # <--- TODO: Update this to the NDK path and version!
 ANDROID_SDK_ROOT="${HOME}/Android/Sdk"                 # <--- TODO: Update this to the SDK path
-BUILD_TOOLS_VERSION="34.0.0"                           # <--- TODO: Update to the installed build tools version
-PLATFORM_VERSION="android-34"                          # <--- TODO: Update to the target Android API level
+BUILD_TOOLS_VERSION="36.0.0"                           # <--- TODO: Update to the installed build tools version
+PLATFORM_VERSION="android-36"                          # <--- TODO: Update to the target Android API level
 
 # Output directory for compiled native libraries (created by ndk-build)
 LIBS_DIR="lib"
 
 # Development Root - all files for project live under this  (customize for your system if not this)
-DVLP_DIR="/sensor/android"
+DVLP_DIR="/home/rywilson/Sensor/Sensor"
 
 # Package name for the APK (must match AndroidManifest.xml)
-PACKAGE_NAME="dev.corticalsystmatics.android-sensor" 
+PACKAGE_NAME="dev.corticalsystematics.android_sensor" 
 
 # Name of the shared library (must match Android.mk LOCAL_MODULE)
 LIB_NAME="accelerometer-udp"
@@ -42,7 +42,7 @@ echo "--- Building native code with ndk-build ---"
 "$NDK_HOME"/ndk-build \
   NDK_PROJECT_PATH="$DVLP_DIR" \
   APP_BUILD_SCRIPT="$DVLP_DIR/src/cpp/Android.mk" \
-  APP_PLATFORM="$PLATFORM_VERSION" \
+  APP_PLATFORM="latest" \
   APP_ABI="arm64-v8a" \
   APP_STL="c++_static" \
   V=1 # Verbose output
@@ -74,11 +74,15 @@ cp "$PWD"/obj/local/arm64-v8a/lib"${LIB_NAME}".so "$LIBS_DIR"/arm64-v8a/lib"${LI
 
 # --- Build Unsigned APK ---
 echo "--- Building unsigned APK ---"
+
+mkdir -p assets
+mkdir -p res
+
 "$ANDROID_SDK_ROOT"/build-tools/"$BUILD_TOOLS_VERSION"/aapt package \
     -f -m -J gen/ \
     -S res \
     -A assets \
-    -M AndroidManifest.xml \
+    -M xml/AndroidManifest.xml \
     -I "$ANDROID_SDK_ROOT"/platforms/"$PLATFORM_VERSION"/android.jar \
     -F bin/unsigned.apk \
     "$LIBS_DIR" # Include the libs directory so aapt bundles them
