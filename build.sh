@@ -77,7 +77,7 @@ echo "--- Building unsigned APK ---"
 
 mkdir -p assets
 mkdir -p res
-
+mkdir -p gen
 "$ANDROID_SDK_ROOT"/build-tools/"$BUILD_TOOLS_VERSION"/aapt package \
     -f -m -J gen/ \
     -S res \
