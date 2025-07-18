@@ -85,7 +85,7 @@ mkdir -p gen
     -M xml/AndroidManifest.xml \
     -I "$ANDROID_SDK_ROOT"/platforms/"$PLATFORM_VERSION"/android.jar \
     -F bin/unsigned.apk \
-    "$LIBS_DIR" # Include the libs directory so aapt bundles them
+    . # "$LIBS_DIR" # Include the libs directory so aapt bundles them
 
 if [ $? -ne 0 ]; then
   echo "APK packaging failed!"

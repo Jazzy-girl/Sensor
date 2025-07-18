@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="dev.corticalsystmatics.android_sensor">
 
+    <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="36" />
+
     <application
         
         tools:replace="android:icon,android:theme,android:label,android:name"

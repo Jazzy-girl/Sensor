@@ -1,0 +1,27 @@
+
+
+installed linux .zip file for android 
+- 
+...
+
+sudo apt update
+sudo apt install libpulse0
+sudo gpasswd -a $USER kvm
+newgrp kvm
+sudo apt install google-android-platform-tools-installer
+adb devices
+
+
+possible replace in .xml:
+
+<activity android:name="android.app.NativeActivity"
+          android:label="@string/app_name"
+          android:exported="true"
+          android:configChanges="orientation|keyboardHidden">
+    <meta-data android:name="android.app.lib_name"
+               android:value="accelerometer-udp" />
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+</activity>
