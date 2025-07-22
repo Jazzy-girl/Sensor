@@ -3,7 +3,7 @@ import socket
 ''' Receiver - this should als be C++ 
     This is to test that messages are being sent from Android App 'android-sensor' '''
 
-UDP_IP = "0.0.0.0"  # Listen on all available interfaces
+UDP_IP = "192.168.216.133"  # Listen on all available interfaces
 UDP_PORT = 12345    # Must match the port in your Android app
 
 sock = socket.socket(socket.AF_INET,  # Internet

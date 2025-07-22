@@ -19,6 +19,7 @@ adb devices
 //to run build:
 ./build.sh
 
+adb shell monkey -p dev.corticalsystmatics.android_sensor -c android.intent.category.LAUNCHER 1
 
 This .xml code replacement works if we don't use Java code and run the cpp code via NativeActivity:
 <application

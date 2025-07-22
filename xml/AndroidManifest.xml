@@ -13,9 +13,11 @@
         android:supportsRtl="true">
         
         <activity android:name="android.app.NativeActivity"
-                android:label="SensorApp"
+                android:label="Sensor Native Activity"
                 android:exported="true"
-                android:configChanges="orientation|keyboardHidden">
+                android:configChanges="orientation|keyboardHidden"
+                android:launchMode="singleTask"
+            >       
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
