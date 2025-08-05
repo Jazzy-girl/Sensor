@@ -7,16 +7,29 @@ sensor
         xml/
             AndroidManifest.xml
             UdpSeender.xml
+        obj/local/arm64-v8a
+            objs/
+                accelerometer-udp/
+                    ...
+                android_native_app_glue/
+                    ...
+            ...
+        res/
+            mipmap/
+                ...
+            values/
+                ...
         src/
             cpp/
-                android.mk          # TODO Makefile
-                udp_sender.cpp      # TODO 
+                Android.mk          # TODO Makefile
+                udp_sender.cpp      
                 main.cpp
             py/
                 recv.py
             java/
                 MainActivity.java
                 UdpSender.java
+                R.java (completely empty file)
         inc/
         lib/
         notes/

@@ -1,7 +1,7 @@
 // 3
 // src/main/java/com/yourpackagename/yourappname/UdpSender.java
 // Create a class to encapsulate your JNI calls.
-package com.yourpackagename.yourappname;
+package java;
 
 public class UdpSender {
 

@@ -12,7 +12,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := accelerometer-udp
 
 # Specify your C++ source files
-LOCAL_SRC_FILES := udp_sender.cpp
+LOCAL_SRC_FILES := Main.cpp udp_sender.cpp
 
 # Add main.cpp if you're using NativeActivity directly
 # LOCAL_SRC_FILES += main.cpp

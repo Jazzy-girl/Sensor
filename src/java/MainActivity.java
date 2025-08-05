@@ -1,6 +1,6 @@
 // src/main/java/com/yourpackagename/yourappname/MainActivity.java
 // This is to handle UI, sensor registration, and interaction with the UdpSender class 
-package com.yourpackagename.yourappname;
+package java;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;

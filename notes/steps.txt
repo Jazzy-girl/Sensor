@@ -1,0 +1,71 @@
+
+
+installed linux .zip file for android 
+- 
+...
+
+commands:
+
+sudo apt update
+sudo apt install libpulse0
+sudo gpasswd -a $USER kvm
+newgrp kvm
+sudo apt install google-android-platform-tools-installer
+adb devices
+
+// to run the emulator:
+~/Android/Sdk/emulator/emulator -avd Medium_Phone_API_36.0
+
+//to run build:
+./build.sh
+
+adb shell monkey -p dev.corticalsystmatics.android_sensor -c android.intent.category.LAUNCHER 1
+
+auth token:
+telnet localhost 5554
+auth 3yC50p6e2hkYH84E
+sensor set acceleration 2.0 1.0 9.8
+
+This .xml code replacement works if we don't use Java code and run the cpp code via NativeActivity:
+<application
+    android:hasCode="false"
+    android:label="SensorApp"
+    android:icon="@mipmap/ic_launcher"
+    android:allowBackup="true"
+    android:supportsRtl="true">
+    
+    <activity android:name="android.app.NativeActivity"
+              android:label="SensorApp"
+              android:exported="true"
+              android:configChanges="orientation|keyboardHidden">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        <meta-data android:name="android.app.lib_name"
+                   android:value="accelerometer-udp" />
+    </activity>
+
+</application>
+
+
+old .xml code:
+    <application
+        
+        tools:replace="android:icon,android:theme,android:label,android:name"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        
+        >
+
+        <activity android:name=".MainActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
