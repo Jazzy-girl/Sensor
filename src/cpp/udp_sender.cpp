@@ -33,6 +33,7 @@ int socket_fd;
 struct sockaddr_in server_addr;
 
 void queueAccelerometerData(long timestamp, float x, float y, float z) {
+    LOGI("Sending: %ld, %.2f, %.2f, %.2f", timestamp, x, y, z);
     std::unique_lock<std::mutex> lock(dataMutex);
     dataQueue.push({timestamp, x, y, z});
     dataCond.notify_one();

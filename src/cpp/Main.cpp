@@ -20,7 +20,8 @@ This file contains the android_main function and the sensor/looper logic, callin
 // Include your udp_sender.h if you create one
 // #include "udp_sender.h" // For declarations of startUdpSender, stopUdpSender etc.
 
-#define UDP_IP "192.168.216.133"
+// #define UDP_IP "192.168.216.133"
+#define UDP_IP "10.0.2.2"
 #define UDP_PORT 12345
 #define LOG_TAG "NativeMain"
 #define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
@@ -42,9 +43,11 @@ static ALooper* looper;
 // };
 
 static int getSensorEvents(int fd, int events, void* data) {
+    LOGI("getSensorEvents triggered with events: %d", events);
     if ((events & ALOOPER_EVENT_INPUT) != 0) {
         ASensorEvent sensorEvent;
         while (ASensorEventQueue_getEvents(sensorEventQueue, &sensorEvent, 1) > 0) {
+            LOGI("Received sensor type: %d", sensorEvent.type);
             if (sensorEvent.type == ASENSOR_TYPE_ACCELEROMETER) {
                 // Call the function from udp_sender.cpp
                 queueAccelerometerData(sensorEvent.timestamp,
@@ -60,6 +63,7 @@ static int getSensorEvents(int fd, int events, void* data) {
 static void handleAppCmd(struct android_app* app, int32_t cmd) {
     switch (cmd) {
         case APP_CMD_INIT_WINDOW:
+            LOGI("APP_CMD_INIT_WINDOW received");
             if (app->window != NULL) {
                 // Initialize sensors and start UDP sender
                 // sensorManager = ASensorManager_getInstance();
@@ -101,6 +105,9 @@ void android_main(struct android_app* app)
 
     while (true) 
         {
+        if (ASensorEventQueue_hasEvents(sensorEventQueue)) {
+            LOGI("Sensor queue has events ready");
+        }
         ident = ALooper_pollAll(-1, NULL, &events, (void**)&source);    // see ALooper.notes
         if (ident >= 0) 
             {

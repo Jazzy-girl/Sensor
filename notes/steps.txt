@@ -21,6 +21,11 @@ adb devices
 
 adb shell monkey -p dev.corticalsystmatics.android_sensor -c android.intent.category.LAUNCHER 1
 
+auth token:
+telnet localhost 5554
+auth 3yC50p6e2hkYH84E
+sensor set acceleration 2.0 1.0 9.8
+
 This .xml code replacement works if we don't use Java code and run the cpp code via NativeActivity:
 <application
     android:hasCode="false"
